@@ -10,23 +10,24 @@ public class A1Novice {
 		Scanner scan = new Scanner(System.in);
 
 		int count = scan.nextInt();
-		String[] values = new String[count];
+		String[] firstName = new String[count];
+		String[] lastName = new String[count];
+		Double[] total = new Double[count];
 		for (int i = 0; i < count; i++) {
-			String firstName = scan.next();
-			String lastName = scan.next();
+			firstName[i] = scan.next();
+			lastName[i] = scan.next();
 			int itemCount = scan.nextInt();
-			double total = 0;
-			values[i] = firstName.charAt(0) + ". " + lastName + ": ";
+			double itemTotal = 0;
 			for (int c = 0; c < itemCount; c++) {
 				int productCount = scan.nextInt();
 				String itemName = scan.next();
 				double price = scan.nextDouble();
-				total += productCount * price;
+				itemTotal += productCount * price;
 			}
-			values[i] += total;
+			total[i] = itemTotal;
 		}
 		for (int v = 0; v < count; v++) {
-			System.out.println(values[v]);
+			System.out.println(firstName[v].charAt(0) + ". " + lastName[v] + ": " + String.format("%.2f", total[v]));
 		}
 				
 		scan.close();
