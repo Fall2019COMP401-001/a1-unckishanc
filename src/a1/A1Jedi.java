@@ -7,6 +7,7 @@ public class A1Jedi {
 	public static void main(String[] args) {
 		
 		Scanner scan = new Scanner(System.in);
+
 		int count = scan.nextInt();
 		
 		String[] names = new String[count];
@@ -25,7 +26,7 @@ public class A1Jedi {
 		int[] products = new int[count];
 		int[] ifBought = new int[count];
 		
-		for (int a = 0; a < customers; a++) {
+		for (int a = 0; a < customers; a++) {						
 			firstName[a] = scan.next();
 			lastName[a] = scan.next();
 			int items = scan.nextInt();
@@ -35,15 +36,19 @@ public class A1Jedi {
 				String product = scan.next();
 				
 				for (int c = 0; c < count; c++) {
-					if (product == names[c]) {
-						products[c] = quant;
+					if (product.equals(names[c])) {
+						products[c] += quant;
 						ifBought[c] += 1;
 					}
 				}
 			}
 		}
 		for (int p = 0; p < count; p++) {
-			System.out.println("" + ifBought[p] + " customers bought " + products[p] + " " + names[p]);
+			if (ifBought[p] == 0) {
+				System.out.println("No customers bought " + names[p]);
+			} else {
+				System.out.println(ifBought[p] + " customers bought " + products[p] + " " + names[p]);
+			}
 		}
 		scan.close();
 	}
